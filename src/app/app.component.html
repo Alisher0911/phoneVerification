@@ -1,0 +1,36 @@
+<div *ngIf="!isSignedIn">
+  <h2>Sign Up</h2>
+  <input #emailSignUp type="text">
+  <input #passwordSignUp type="text">
+  <button (click)="onSignUp(emailSignUp.value, passwordSignUp.value)">Sign Up</button>
+</div>
+
+<div *ngIf="!isSignedIn">
+  <h2>Sign In</h2>
+  <input #email type="text">
+  <input #password type="text">
+  <button (click)="onSignIn(email.value, password.value)">Sign In</button>
+</div>
+
+<br><br><br>
+
+<div *ngIf="!isSignedIn">
+  <div class="form-group">
+    <label for="phoneNumber">Phone Number</label><br>
+    <input #phoneNum name="phoneNumber" [(ngModel)]="phoneNumber" type="text" class="form-control">
+  </div>
+  <br>
+  <div id='recaptcha-container'></div>
+  <br>
+  <button [disabled]="disableCodeSendButton" class="btn btn-primary btn-block" (click)="sendCode()">Send Message</button>
+  <hr>
+  <div *ngIf="windowRef.confirmationResult">
+    <div class="form-group">
+      <label for="code">Code</label><br>
+      <input name="code" [(ngModel)]="code" type="text" class="form-control">
+    </div>
+    <button class="btn btn-primary btn-block" (click)="verifyCode()">Verify</button>
+  </div>
+</div>
+
+<app-home *ngIf="isSignedIn" (isLogout)="handleLogout()"></app-home>
