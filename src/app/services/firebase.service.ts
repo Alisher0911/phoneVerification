@@ -32,10 +32,9 @@ export class FirebaseService {
     await this.firebaseAuth.signInWithPhoneNumber(phone, appVerifier)
       .then(result => {
         windowRef.confirmationResult = result;
-        this.isCodeSent = true
         console.log(windowRef.confirmationResult);
       })
-      .catch( error => console.log(error) );
+      .catch( error =>  console.log(error));
   }
 
   async verify(windowRef: any, code: string) {

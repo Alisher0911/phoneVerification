@@ -1,15 +1,45 @@
-<div style="text-align: center;"><h1>Attach an ID card on both sides</h1>
+<div style="text-align: center">
+  <h1>Attach an ID card on both sides</h1>
   <label>Upload front side of your id</label>
-  <input id="inputFront" type="file" (change)="handleFileSelect($event)"/><br>
-  <label>Upload back side of your id</label>
-  <input id="inputBack" type="file" (change)="handleFileSelect2($event)"><br>
-  <button class="button-styling" id="myButton" class="float-left submit-button" (click)="GetText()"> Check </button>
-</div>
+  <br />
+  <div class="example-2">
+    <div class="form-group">
+      <input type="file" name="file" id="inputFront" class="input-file" (change)="handleFileSelect($event)"/>
+      <label for="inputFront" class="btn btn-tertiary js-labelFile">
+        <i class="icon fa fa-check"></i>
+        <span class="js-fileName" *ngIf=!isFileChosen>Upload File</span>
+        <span class="js-fileName" *ngIf=isFileChosen>{{ fileName }}</span>
+      </label>
+    </div>
+  </div>
 
-<!--<div>
-  <label>Upload front side of your id</label>
-  <input id="inputFront" type="file" (change)="handleFileSelect($event)"><br>
+  <!--<input id="inputFront" type="file" (change)="handleFileSelect($event)"/><br>-->
+  <br /><br />
   <label>Upload back side of your id</label>
-  <input id="inputBack" type="file" (change)="handleFileSelect2($event)"><br>
-  <button (click)="GetText()">Extract Text</button>
-</div>-->
+  <br />
+  <link
+    rel="stylesheet"
+    href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css"
+  />
+
+  <div class="example-2">
+    <div class="form-group">
+      <input type="file" name="file" id="inputBack" class="input-file" (change)="handleFileSelect2($event)"/>
+      <label for="inputBack" class="btn btn-tertiary js-labelFile">
+        <i class="icon fa fa-check"></i>
+        <span class="js-fileName" *ngIf="!isFile2Chosen">Upload File</span>
+        <span class="js-fileName" *ngIf="isFile2Chosen">{{ fileName2 }}</span>
+      </label>
+    </div>
+  </div>
+
+  <br>
+
+  <button
+    class="button-styling float-left submit-button"
+    id="myButton"
+    (click)="GetText()"
+  >
+    Check
+  </button>
+</div>

@@ -1,42 +1,62 @@
-<div *ngIf="!isCodeSent" class="container js-instance">
-    <div class="flex-styling">
-      <div class="card-styling">
-        <div class="form-style">
-          <div>
-            <h2>Enter mobile number: </h2>
+<div *ngIf="!isCodeSent" class="flex-styling">
+  <div class="card-styling">
+    <div class="form-style">
+      <div>
+        <h2>Enter mobile number:</h2>
 
-            <input #phoneNum name="phoneNumber" [(ngModel)]="phoneNumber" placeholder="+7 ___ ___ __ __" type="tel" class="input-styling">
-            <br>
-            <div id='recaptcha-container'></div>
-            <br>
-            <div style="text-align: center;"><h6>You will receive an SMS with a code to the specified number</h6></div>
-          </div>
-          <div>
-          </div>
-          <button [disabled]="disableCodeSendButton" class="button-styling float-left submit-button" id="myButton" (click)="sendCode()"> Get a code </button>
+        <input
+          #phoneNum
+          name="phoneNumber"
+          [(ngModel)]="phoneNumber"
+          placeholder="+7 ___ ___ __ __"
+          type="tel"
+          class="input-styling"
+        />
+        <br />
+        <div id="recaptcha-container"></div>
+        <br />
+        <div style="text-align: center">
+          <h6>You will receive an SMS with a code to the specified number</h6>
         </div>
       </div>
+      <div></div>
+      <button
+        [disabled]="disableCodeSendButton"
+        class="button-styling float-left submit-button"
+        id="myButton"
+        (click)="sendCode()"
+      >
+        Get a code
+      </button>
     </div>
-</div>
+  </div>
 
+  <br />
 
-<div *ngIf="isCodeSent" class="container js-instance">
-    <div class="flex-styling">
-      <div class="card-styling">
-        <div class="form-style">
-          <div>
-            <h2>Confirm the code: </h2>
+  <div *ngIf="windowRef.confirmationResult" class="card-styling">
+    <div class="form-style">
+      <div>
+        <h2>Confirm the code:</h2>
 
-            <input name="code" [(ngModel)]="code" placeholder="___ ___ ___ ___ ___ ___" type="tel" class="input-styling">
-          </div>
-          <div>
-          </div>
-          <button class="button-styling float-left submit-button" id="myButton" (click)="verifyCode()"> Submit </button>
-        </div>
+        <input
+          name="code"
+          [(ngModel)]="code"
+          placeholder="___ ___ ___ ___ ___ ___"
+          type="tel"
+          class="input-styling"
+        />
       </div>
+      <div></div>
+      <button
+        class="button-styling float-left submit-button"
+        id="myButton"
+        (click)="verifyCode()"
+      >
+        Submit
+      </button>
     </div>
+  </div>
 </div>
-
 
 <!--<div *ngIf="!isSignedIn">
   <div class="form-group">

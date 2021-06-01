@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component, OnDestroy, OnInit } from '@angular/core';
 import * as firebase from 'firebase/app';
 import { auth } from 'firebase';
 import { AngularFireAuth } from '@angular/fire/auth';
@@ -44,6 +44,7 @@ export class PhoneComponent implements OnInit, AfterViewInit {
     ) { }
 
   ngOnInit(): void {
+    this.isCodeSent = false;
     firebase.initializeApp(this.config);
     this.firebaseService.logout();
     this.windowRef = this.windowService.windowRef;
@@ -79,23 +80,9 @@ export class PhoneComponent implements OnInit, AfterViewInit {
     }
   }*/
 
-  handleLogout() {
-    this.isSignedIn = false
-  }
-
-
   async sendCode() {
     const appVerifier = this.windowRef.recaptchaVerifier
     this.firebaseService.signInWithPhone(this.phoneNumber, appVerifier, this.windowRef);
-    if (this.firebaseService.isCodeSent) {
-      this.isCodeSent = true
-    }
-    /*await this.firebaseAuth.signInWithPhoneNumber(this.phoneNumber, appVerifier)
-      .then(result => {
-        this.windowRef.confirmationResult = result;
-        console.log(this.windowRef.confirmationResult);
-      })
-      .catch( error => console.log(error) );*/
   }
 
   async verifyCode() {
@@ -103,15 +90,7 @@ export class PhoneComponent implements OnInit, AfterViewInit {
     if(this.firebaseService.isVerified) {
       this.sharedService.phoneNumber = this.phoneNumber;
       this.router.navigate(['/ocr']);
-      //this.isSignedIn = true
     }
-    /*this.windowRef.confirmationResult
-      .confirm(this.code)
-      .then((userCredentials) => {
-        console.log(userCredentials)
-        this.isSignedIn = true;
-      })
-      .catch(error => console.log(error, "Incorrect code entered."));*/
   }
 
 }
