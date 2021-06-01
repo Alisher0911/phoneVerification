@@ -9,16 +9,34 @@ import { FirebaseService } from './services/firebase.service';
 import { HomeComponent } from './home/home.component';
 import { FormsModule } from '@angular/forms';
 import { WindowService } from './services/window.service';
+import { OcrComponent } from './ocr/ocr.component';
+import { HttpClientModule } from '@angular/common/http';
+import { RouterModule, Routes } from '@angular/router';
+import { OcrService } from './services/ocr.service';
+import { PhoneComponent } from './phone/phone.component';
+import { ResultComponent } from './result/result.component';
+import { SharedService } from './services/shared.service';
+
+const appRoutes: Routes =[
+  { path: '', component: PhoneComponent },
+  { path: 'ocr', component: OcrComponent },
+  { path: 'result', component: ResultComponent }
+]
 
 @NgModule({
   declarations: [
     AppComponent,
-    HomeComponent
+    HomeComponent,
+    PhoneComponent,
+    OcrComponent,
+    ResultComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
+    HttpClientModule,
     FormsModule,
+    RouterModule.forRoot(appRoutes),
     AngularFireModule.initializeApp({
       apiKey: "AIzaSyAwaeYCW_Gz2stgc349ZuLKMIP4KBejYG0",
       authDomain: "identification-33691.firebaseapp.com",
@@ -31,7 +49,9 @@ import { WindowService } from './services/window.service';
   ],
   providers: [
     FirebaseService,
-    WindowService
+    WindowService,
+    OcrService,
+    SharedService
   ],
   bootstrap: [AppComponent]
 })

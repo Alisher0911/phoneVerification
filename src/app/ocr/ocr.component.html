@@ -1,0 +1,15 @@
+<div style="text-align: center;"><h1>Attach an ID card on both sides</h1>
+  <label>Upload front side of your id</label>
+  <input id="inputFront" type="file" (change)="handleFileSelect($event)"/><br>
+  <label>Upload back side of your id</label>
+  <input id="inputBack" type="file" (change)="handleFileSelect2($event)"><br>
+  <button class="button-styling" id="myButton" class="float-left submit-button" (click)="GetText()"> Check </button>
+</div>
+
+<!--<div>
+  <label>Upload front side of your id</label>
+  <input id="inputFront" type="file" (change)="handleFileSelect($event)"><br>
+  <label>Upload back side of your id</label>
+  <input id="inputBack" type="file" (change)="handleFileSelect2($event)"><br>
+  <button (click)="GetText()">Extract Text</button>
+</div>-->

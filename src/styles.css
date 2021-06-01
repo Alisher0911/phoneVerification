@@ -1,1 +1,105 @@
 /* You can add global styles to this file, and also import other style files */
+.flex-styling {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  height: 100vh;
+  background-color: #f8f9fa;
+  font-family: helvetica;
+}
+
+h2 {
+  color: blue;
+  padding-bottom: 15px;
+}
+
+.button-styling {
+  border: none;
+  background-color: blue;
+  color: white;
+  font-family: proxima nova;
+  padding: 8px 18px;
+  border-radius: 4px;
+  margin-top: 10px;
+  margin-bottom: 20px;
+}
+
+.text-styling {
+  color: #6c757d;
+  font-family: proxima nova;
+  margin-top: 20px;
+}
+.input-styling {
+  padding: 10px 24px;
+  width: 250px;
+  margin: 10px 0px;
+  box-sizing: border-box;
+  border-radius: 6px;
+  border: 1.5px solid #ced4da;
+}
+
+.card-styling {
+  display: flex;
+  margin-top: 1%;
+  padding: 20px;
+  background-color: white;
+  color: #333533;
+  width: 400px;
+  height: 330px;
+  border-radius: 10px;
+  box-shadow: 0 8px 8px 0 rgba(0, 0, 0.3, 0.3);
+  transition: 0.3s;
+}
+
+.card-styling:hover {
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0.5, 0.5);
+}
+
+textarea:focus,
+input:focus {
+  outline: none;
+}
+
+.button-styling:hover {
+  cursor: pointer;
+}
+
+::placeholder {
+  color: #ced4da;
+  font-size: 12px;
+  font-style: italic;
+}
+.password-row-style {
+  flex-direction: row;
+}
+
+.form-style {
+  margin-left: 80px;
+}
+
+.tooltip {
+  position: relative;
+}
+
+.tooltip::after {
+  top: 0;
+  left: 20%;
+  background-color: #313247;
+  border-radius: 4px;
+  color: #fff;
+  display: none;
+  padding: 15px 15px 15px 15px;
+  font-size: 10px;
+  position: absolute;
+  transform: translate(-20%, calc(-100% - 10px));
+}
+
+.tooltip:hover::after {
+  display: block;
+}
+
+h3 {
+  color: #6c757d;
+}

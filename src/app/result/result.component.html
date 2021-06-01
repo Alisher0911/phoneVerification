@@ -1,0 +1,43 @@
+<div *ngIf="idDataFront" class="container js-instance">
+    <div class="flex-styling">
+      <div class="card-styling">
+        <div class="form-style">
+          <div>
+            <h2>Successfully identified </h2>
+            <div class="text-styling"> Name: {{ idDataFront.Name }} </div>
+
+          </div>
+          <div>
+
+            <div class="text-styling tooltip"> Surname: {{ idDataFront.Surname }} <i class="fas fa-info-circle "></i></div>
+
+          </div>
+          <div>
+
+            <div class="text-styling tooltip"> Birthdate: {{ idDataFront.Birthdate }} <i class="fas fa-info-circle "></i></div>
+
+          </div>
+          <div>
+
+            <div class="text-styling tooltip"> IIN: {{ idDataFront.Iin }} <i class="fas fa-info-circle "></i></div>
+
+          </div>
+          <div>
+
+            <div class="text-styling tooltip"> Phone number: {{ phoneNumber }} <i class="fas fa-info-circle "></i></div>
+
+          </div>
+          <!--<button class="button-styling" id="myButton" class="float-left submit-button"> Confirm </button>-->
+        </div>
+      </div>
+    </div>
+</div>
+
+
+<!--<div *ngIf="idDataFront">
+    <p>Name: {{idDataFront.Name}}</p>
+    <p>Surname: {{idDataFront.Surname}}</p>
+    <p>Birthdate: {{idDataFront.Birthdate}}</p>
+    <p>IIN: {{idDataFront.Iin}}</p>
+    <p>Phone Number: {{ phoneNumber }}</p>
+</div>-->

@@ -7,11 +7,12 @@ import { auth } from 'firebase';
 })
 export class FirebaseService {
 
-  isLoggedIn = false
+  isVerified = false
+  isCodeSent = false
 
   constructor(public firebaseAuth: AngularFireAuth) { }
 
-  async signIn(email: string, password: string) {
+  /*async signIn(email: string, password: string) {
     await this.firebaseAuth.signInWithEmailAndPassword(email, password)
       .then(res => {
         this.isLoggedIn = true
@@ -25,12 +26,13 @@ export class FirebaseService {
         this.isLoggedIn = true
         localStorage.setItem('user', JSON.stringify(res.user))
       })
-  }
+  }*/
 
   async signInWithPhone(phone: string, appVerifier: auth.RecaptchaVerifier, windowRef: any) {
     await this.firebaseAuth.signInWithPhoneNumber(phone, appVerifier)
       .then(result => {
         windowRef.confirmationResult = result;
+        this.isCodeSent = true
         console.log(windowRef.confirmationResult);
       })
       .catch( error => console.log(error) );
@@ -39,12 +41,12 @@ export class FirebaseService {
   async verify(windowRef: any, code: string) {
     windowRef.confirmationResult
       .confirm(code)
-      .then((userCredentials) =>  {
+      .then((userCredentials: any) =>  {
         console.log(userCredentials);
-        this.isLoggedIn = true;
+        this.isVerified = true;
         localStorage.setItem('user', JSON.stringify(userCredentials));
       })
-      .catch(error => console.log(error, "Incorrect code entered."));
+      .catch((error: any) => console.log(error, "Incorrect code entered."));
   }
 
   logout() {
